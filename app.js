@@ -1,6 +1,6 @@
 const Koa = require('koa');
 const KoaRouter = require('koa-router');
-const KoaBody = require('koa-body');
+const body = require('./middlewares/body');
 const KoaStaticCache = require('koa-static-cache');
 
 const app = new Koa();
@@ -11,12 +11,12 @@ app.use(KoaStaticCache('./public', {
     dynamic: true
 }));
 
-router.get('/test', ctx => {
+router.post('/upLoad', body('./public/upLoad'), ctx => {
     ctx.body = {
         state: 1,
-        data: '成功'
+        data: '上传成功'
     }
-})
+});
 
 app.use(router.routes());
 
