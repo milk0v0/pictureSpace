@@ -1,3 +1,4 @@
+import ajax from './ajax.js';
 const upLoadEle = document.querySelector('#upLoad');
 const fileEle = document.querySelector('#file');
 const upLoadedEle = document.querySelector('#upLoaded');
@@ -6,6 +7,8 @@ const closeEle = document.querySelector('#close');
 const task_panelEle = document.querySelector('#task_panel');
 const task_bodyEle = document.querySelector('#task_body');
 const clearEle = document.querySelector('#clear');
+
+// window.localStorage.getItem()
 
 upLoadEle.onclick = () => fileEle.click();
 

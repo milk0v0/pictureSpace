@@ -1,6 +1,6 @@
 function noop() { }
 
-function ajax(options) {
+export default options => {
     options = {
         ...{
             method: 'get',
@@ -12,7 +12,7 @@ function ajax(options) {
     options.query && (options.url += queryParse(options.query));
 
     const xhr = new XMLHttpRequest();
-    
+
     options.onprogress && (xhr.upload.onprogress = e => options.onprogress(e));
     xhr.onload = function () {
         options.success(this.responseText);
