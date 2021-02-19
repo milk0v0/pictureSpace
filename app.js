@@ -21,16 +21,8 @@ router.post('/register/checkName', body(), contollers.registerCheckName);
 router.post('/register', body(), contollers.registerCheckName, contollers.register);
 router.post('/login', body(), contollers.login);
 
-// router.get('/getPhotos', ctx => {
-
-// })
-
-// router.post('/upLoad', body('./public/upLoad'), ctx => {
-//     ctx.body = {
-//         state: 1,
-//         data: '上传成功'
-//     }
-// });
+router.post('/getPhotos', contollers.getPhotos);
+router.post('/upLoad', body('./public/upLoad'), contollers.upLoad);
 
 app.use(router.routes());
 
