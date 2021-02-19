@@ -32,6 +32,7 @@ header {
 }
 
 .task_panel {
+    background-color: #fff;
     display: none;
     position: fixed;
     right: 20px;
@@ -155,4 +156,20 @@ header {
     right: 60px;
     font-weight: bold;
     width: initial;
+}
+
+.userName, .logOut {
+    float: right;
+    line-height: 34px;
+}
+
+.logOut {
+    color: blue;
+    cursor: pointer;
+    margin-left: 20px;
+}
+
+.content-list>img {
+    width: 30%;
+    margin: 1.6%;
 }
