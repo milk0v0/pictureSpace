@@ -15,10 +15,16 @@ export default options => {
 
     options.onprogress && (xhr.upload.onprogress = e => options.onprogress(e));
     xhr.onload = function () {
-        options.success(this.responseText);
+        options.success(this);
     }
 
     xhr.open(options.method, options.url, true);
+    
+    if(options.headers) {
+        for (const key in options.headers) {
+            xhr.setRequestHeader(key, options.headers[key])
+        }
+    }
 
     let data = null;
     options.data && (data = bodyParse(options.data));
