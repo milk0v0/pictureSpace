@@ -7,8 +7,9 @@ const closeEle = document.querySelector('#close');
 const task_panelEle = document.querySelector('#task_panel');
 const task_bodyEle = document.querySelector('#task_body');
 const clearEle = document.querySelector('#clear');
-
-// window.localStorage.getItem()
+const userNameEle = document.querySelector('#userName');
+const logOutEle = document.querySelector('#logOut');
+const contentListEle = document.querySelector('.content-list');
 
 upLoadEle.onclick = () => fileEle.click();
 
@@ -33,13 +34,26 @@ fileEle.onchange = function () {
             method: 'post',
             url: '/upLoad',
             data: { file },
+            headers: { authorization: 'Bearer ' + window.localStorage.getItem('authorization') },
             onprogress(e) {
                 li.querySelector('.progress').style.width = e.loaded / e.total * 100 + '%';
             },
-            success() {
+            success(xhr) {
                 li.setAttribute('success', true);
                 upLoadedEle.innerHTML = ++upLoadedEle.innerHTML;
                 li.querySelector('.task-progress-status').innerHTML = '<span class="icon task-progress-status-success"></span>';
+
+                task_body.querySelectorAll('li').length === task_body.querySelectorAll('li[success=true]').length && closeEle.click();
+
+                const { data } = JSON.parse(xhr.responseText);
+                const firstEle = contentListEle.querySelector('img:nth-of-type(1)');
+                const img = new Image();
+                img.src = data;
+                if (firstEle) {
+                    contentListEle.insertBefore(img, firstEle);
+                } else {
+                    contentListEle.appendChild(img);
+                }
             }
         });
     }
@@ -55,3 +69,32 @@ clearEle.onclick = () => {
     upLoadedEle.innerHTML = 0;
     upLoadAllEle.innerHTML = task_body.querySelectorAll('li').length;
 }
+
+logOutEle.onclick = () => {
+    window.localStorage.clear('authorization', 'userName');
+    window.location.href = '/login.html';
+}
+
+function getPhotos() {
+    const userName = window.localStorage.getItem('userName');
+    const authorization = window.localStorage.getItem('authorization');
+    if (!userName || !authorization) {
+        return window.location.href = '/login.html';
+    }
+    userNameEle.innerHTML = userName;
+    ajax({
+        method: 'post',
+        url: '/getPhotos',
+        headers: { authorization: 'Bearer ' + authorization },
+        success(xhr) {
+            const { data } = JSON.parse(xhr.responseText);
+            let str = '';
+            data.forEach(item => {
+                str = `<img src=${item}/>` + str;
+            });
+            contentListEle.innerHTML = str;
+        }
+    });
+}
+
+getPhotos();
