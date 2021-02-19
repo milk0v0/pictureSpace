@@ -14,7 +14,8 @@ nameEle.onblur = function () {
         data: {
             name: this.value
         },
-        success(_data) {
+        success(xhr) {
+            const _data = xhr.responseText;
             nameState = JSON.parse(_data);
             const { state, data } = nameState;
             nameWarningEle.innerHTML = '';
@@ -54,8 +55,8 @@ confirmEle.onclick = () => {
             name: nameEle.value,
             pwd: pwdEls[0].value
         },
-        success(_data) {
-            console.log(_data);
+        success(xhr) {
+            const _data = xhr.responseText;
             const { state, data } = JSON.parse(_data);
             alert(data);
             state ===1 && (window.location.href = '/login.html');
