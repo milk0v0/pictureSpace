@@ -19,5 +19,26 @@ module.exports = {
                 err && reject(err);
             });
         })
+    },
+    async getPhotos(userId) {
+        return new Promise((resolve, reject) => {
+            connection.execute('SELECT * FROM `photos` WHERE `userId` = ?', [
+                userId
+            ], (err, res) => {
+                res && resolve(res);
+                err && reject(err);
+            });
+        })
+    },
+    async upLoad(name, userId) {
+        return new Promise((resolve, reject) => {
+            connection.execute('insert into `photos` (`name`, `userId`) values (?, ?)', [
+                name,
+                userId
+            ], (err, res) => {
+                res && resolve(res);
+                err && reject(err);
+            });
+        })
     }
 }
