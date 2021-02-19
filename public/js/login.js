@@ -14,9 +14,12 @@ confirmEle.onclick = () => {
             name: nameEle.value,
             pwd: userPwdEle.value
         },
-        success(_data) {
-            const { state, data } = JSON.parse(_data);
-            if (state === 1) {
+        success(xhr) {
+            const { state, data } = JSON.parse(xhr.responseText);
+            const authorization = xhr.getResponseHeader('Authorization');
+            if (state === 1 && authorization) {
+                window.localStorage.setItem('authorization', authorization);
+                window.localStorage.setItem('userName', data);
                 return window.location.href = '/index.html'
             }
             alert(data);
