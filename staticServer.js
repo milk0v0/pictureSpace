@@ -7,4 +7,4 @@ app.use(KoaStaticCache('./public', {
     dynamic: true
 }));
 
-app.listen(3000);
+app.listen(8080);
