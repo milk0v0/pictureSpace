@@ -7,6 +7,20 @@ const contollers = require('./middlewares/contollers');
 const app = new Koa();
 const router = new KoaRouter();
 
+// 跨域解决方案1: CORS
+// app.use(async (ctx, next) => {
+//     ctx.set({
+//         'Access-Control-Allow-Origin': 'http://127.0.0.1:8080',
+//         'Access-Control-Allow-Headers': 'Authorization',
+//         'Access-Control-Expose-Headers': 'Authorization'
+//     });
+//     if(ctx.method === 'OPTIONS') {
+//         ctx.set('Access-Control-Request-Method', 'POST');
+//         return ctx.body = ''
+//     }
+//     await next();
+// });
+
 app.use(koaJwt({ secret: 'milk' }).unless({
     path: [/^\/register/, /^\/login/]
 }));
