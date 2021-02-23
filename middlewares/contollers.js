@@ -27,6 +27,7 @@ module.exports = {
         }
     },
     async login(ctx) {
+        console.log(1111);
         const { name, pwd } = ctx.request.body;
         const [row] = await model.queryUser(name);
         if (!row) {
@@ -50,6 +51,7 @@ module.exports = {
         }
     },
     async getPhotos(ctx) {
+        console.log('请求了');
         const { id } = ctx.state.user;
 
         if (!id) {
