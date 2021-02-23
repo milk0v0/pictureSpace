@@ -10,7 +10,8 @@ let nameState;
 nameEle.onblur = function () {
     ajax({
         method: 'post',
-        url: '/register/checkName',
+        // url: 'http://127.0.0.1:3000/register/checkName', // CORS
+        url: 'api/register/checkName', // 服务器代理
         data: {
             name: this.value
         },
@@ -50,7 +51,8 @@ confirmEle.onclick = () => {
 
     ajax({
         method: 'post',
-        url: '/register',
+        // url: 'http://127.0.0.1:3000/register', // CORS
+        url: 'api/register', // 服务器代理
         data: {
             name: nameEle.value,
             pwd: pwdEls[0].value

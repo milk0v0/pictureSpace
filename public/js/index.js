@@ -32,7 +32,8 @@ fileEle.onchange = function () {
 
         ajax({
             method: 'post',
-            url: '/upLoad',
+            // url: 'http://127.0.0.1:3000/upLoad', // CORS
+            url: 'api/upLoad', // 服务器代理
             data: { file },
             headers: { authorization: 'Bearer ' + window.localStorage.getItem('authorization') },
             onprogress(e) {
@@ -84,7 +85,8 @@ function getPhotos() {
     userNameEle.innerHTML = userName;
     ajax({
         method: 'post',
-        url: '/getPhotos',
+        // url: 'http://127.0.0.1:3000/getPhotos', // CORS
+        url: 'api/getPhotos', // 服务器代理
         headers: { authorization: 'Bearer ' + authorization },
         success(xhr) {
             const { data } = JSON.parse(xhr.responseText);

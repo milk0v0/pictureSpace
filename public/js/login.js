@@ -9,7 +9,8 @@ confirmEle.onclick = () => {
     }
     ajax({
         method: 'post',
-        url: 'login',
+        // url: 'http://127.0.0.1:3000/login', // CORS
+        url: 'api/login', // 服务器代理
         data: {
             name: nameEle.value,
             pwd: userPwdEle.value
