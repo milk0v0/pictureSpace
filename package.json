@@ -9,12 +9,14 @@
     "koa-body": "^4.2.0",
     "koa-jwt": "^4.0.0",
     "koa-router": "^10.0.0",
+    "koa-server-http-proxy": "^0.1.0",
     "koa-static-cache": "^5.1.4",
     "mysql2": "^2.2.5"
   },
   "devDependencies": {},
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "1": "node app.js",
+    "2": "node staticServer.js"
   },
   "author": "",
   "license": "ISC"
