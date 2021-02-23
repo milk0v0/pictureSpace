@@ -1,0 +1,9 @@
+INSERT INTO `photos` (`id`, `name`, `userId`) VALUES (1, 'upload_e8d3625fbbbaddac507ba73735bf0b20.jpg', 1);
+INSERT INTO `photos` (`id`, `name`, `userId`) VALUES (2, 'upload_bd7d04ac739054ede06292f98fb6912b.jpg', 1);
+INSERT INTO `photos` (`id`, `name`, `userId`) VALUES (3, 'upload_e355be982f17ee52e9935d1a071ed6f7.jpg', 1);
+INSERT INTO `photos` (`id`, `name`, `userId`) VALUES (4, 'upload_c1c8966f439282625abcf65e00d268aa.jpg', 1);
+INSERT INTO `photos` (`id`, `name`, `userId`) VALUES (5, 'upload_38f25277fa339c8a424dc0e0f80b57dc.jpg', 1);
+INSERT INTO `photos` (`id`, `name`, `userId`) VALUES (6, 'upload_551e1ee8957527c32643f86dfc7d4463.jpg', 1);
+INSERT INTO `photos` (`id`, `name`, `userId`) VALUES (7, 'upload_040a0431551065c74258df0ff6a04600.jpg', 1);
+INSERT INTO `photos` (`id`, `name`, `userId`) VALUES (8, 'upload_266cb80810e75c1c7070a5ef64ed39b2.jpg', 1);
+INSERT INTO `photos` (`id`, `name`, `userId`) VALUES (9, 'upload_89a0185fde9d05553edafcce13d4e87c.jpg', 1);
